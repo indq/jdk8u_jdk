@@ -34,11 +34,14 @@
 
 #ifdef _MSC_VER
 
-#if _MSC_VER > 1400 && _MSC_VER < 1600
+#pragma comment(linker, "/export:NvOptimusEnablement,Data")
+#pragma comment(linker, "/export:AmdPowerXpressRequestHighPerformance,Data")
 extern "C" {
     __declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
     __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 }
+
+#if _MSC_VER > 1400 && _MSC_VER < 1600
 /*
  * When building for Microsoft Windows, main has a dependency on msvcr??.dll.
  *
